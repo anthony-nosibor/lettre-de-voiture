@@ -43,3 +43,18 @@ Puis utilisez Expo Go (Android/iOS) ou `w` pour le web dans le terminal Expo.
 - Ajouter une signature numérique du client.
 - Ajouter un écran liste/filtre des livraisons.
 - Générer un PDF de lettre de voiture.
+
+## Dépannage
+
+### Erreur: `Fichier 'expo/tsconfig.base' introuvable.ts`
+
+Cette erreur arrive quand les dépendances Expo ne sont pas installées (ou quand l'environnement bloque `npm install`).
+
+- Dans cette version du projet, `tsconfig.json` n'utilise plus `extends: "expo/tsconfig.base"`, donc l'erreur disparaît même sans ce fichier.
+- Si vous êtes en local, installez quand même les dépendances dès que possible:
+
+```bash
+npm install
+```
+
+Puis redémarrez TypeScript Server dans votre éditeur (VS Code: `Ctrl+Shift+P` → `TypeScript: Restart TS Server`).
