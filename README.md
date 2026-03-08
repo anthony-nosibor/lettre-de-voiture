@@ -58,3 +58,31 @@ npm install
 ```
 
 Puis redémarrez TypeScript Server dans votre éditeur (VS Code: `Ctrl+Shift+P` → `TypeScript: Restart TS Server`).
+
+
+## Firebase Firestore avec Expo: pas de `build.gradle`, c'est normal
+
+Si vous utilisez **Expo en mode managed** (ce projet), vous n'avez pas de dossier `android/` ni de fichier `android/build.gradle` tant que vous ne faites pas `prebuild`.
+
+Pour Firestore dans cette app, on utilise le **SDK JavaScript Firebase** (`firebase/app` + `firebase/firestore`).
+Donc vous n'avez **pas besoin** de modifier `build.gradle` pour cette intégration.
+
+### Ce que vous devez faire
+
+1. Copier les variables d'environnement:
+
+```bash
+cp .env.example .env
+```
+
+2. Renseigner vos clés Firebase (`EXPO_PUBLIC_FIREBASE_*`) dans `.env`.
+3. Redémarrer Expo:
+
+```bash
+npm run start
+```
+
+### Quand un `build.gradle` devient nécessaire ?
+
+Seulement si vous passez sur du **native Android** (ex: `npx expo prebuild`, ou `npx expo run:android`) et que vous ajoutez des modules natifs qui l'exigent.
+Dans ce cas, Expo génère le dossier `android/` automatiquement.
