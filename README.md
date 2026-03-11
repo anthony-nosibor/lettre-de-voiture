@@ -86,3 +86,28 @@ npm run start
 
 Seulement si vous passez sur du **native Android** (ex: `npx expo prebuild`, ou `npx expo run:android`) et que vous ajoutez des modules natifs qui l'exigent.
 Dans ce cas, Expo génère le dossier `android/` automatiquement.
+
+
+### Erreur Web: `Unable to resolve "react-native-web/dist/index"`
+
+Cette erreur signifie généralement que les dépendances Web d'Expo ne sont pas installées ou sont incohérentes avec la version d'Expo.
+
+Dans ce projet, il faut avoir **au minimum**:
+
+- `react-dom`
+- `react-native-web`
+
+Elles sont maintenant déclarées dans `package.json`.
+
+Ensuite, en local:
+
+```bash
+npm install
+npm run web
+```
+
+Si l'erreur persiste, videz le cache Metro:
+
+```bash
+npx expo start -c
+```
